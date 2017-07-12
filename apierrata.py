@@ -18,7 +18,7 @@ def getChannelLabel():
 def getErrata(DateTime,channel_disable):
 	datachannel = getChannelLabel()
 	for channelLabel in datachannel:
-		if channel_disable not in channelLabel:
+		if not channelLabel.startwith(channel_disable):
 			listErrata = client.channel.software.listErrata(session, channelLabel,DateTime.isoformat())
 			for key in listErrata:
 				yield key
